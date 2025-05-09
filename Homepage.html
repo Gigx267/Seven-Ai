@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seven AI - Your AI Healthcare Companion</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #e1ff00;
+      --secondary: #6c5ce7;
+      --dark: #0a0a14;
+      --darker: #05050a;
+      --text: #e0e0ff;
+    
+      --code-bg: #1e1e2d;
+   
+      --card-bg: rgba(20, 20, 40, 0.8);
+      --neon-glow: 0 0 10px rgba(0, 247, 255, 0.8),
+                   0 0 20px rgba(0, 247, 255, 0.6),
+                   0 0 30px rgba(0, 247, 255, 0.4);
+      --neon-purple: 0 0 10px rgba(138, 43, 226, 0.8),
+                     0 0 20px rgba(138, 43, 226, 0.6),
+                     0 0 30px rgba(138, 43, 226, 0.4);
+    }
+
+    @font-face {
+      font-family: 'Quantum';
+      src: url('https://fonts.cdnfonts.com/css/quantum') format('woff2');
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 var(--primary), -2px 0 var(--tertiary); }
+      25% { text-shadow: -2px 0 var(--primary), 2px 0 var(--tertiary); }
+      50% { text-shadow: 2px 0 var(--tertiary), -2px 0 var(--secondary); }
+      75% { text-shadow: -2px 0 var(--tertiary), 2px 0 var(--secondary); }
+      100% { text-shadow: 2px 0 var(--secondary), -2px 0 var(--primary); }
+    }
+
+    @keyframes hologram {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.7; }
+      100% { opacity: 0.3; }
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--darker);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      overflow-x: hidden;
+      perspective: 1000px;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(0, 247, 255, 0.05) 0%, transparent 20%),
+        radial-gradient(circle at 80% 70%, rgba(138, 43, 226, 0.05) 0%, transparent 20%),
+        linear-gradient(to bottom, rgba(5, 5, 10, 0.9), rgba(10, 10, 20, 0.95));
+    }
+
+    .header {
+      background: linear-gradient(90deg, rgba(10, 10, 20, 0.9) 0%, rgba(5, 5, 10, 0.95) 100%);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transform-style: preserve-3d;
+    }
+
+    .logo {
+      font-family: 'Quantum', 'Arial', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: var(--neon-glow);
+      letter-spacing: 2px;
+      animation: glitch 5s infinite alternate;
+      position: relative;
+    }
+
+    .logo::after {
+      content: 'SEVEN AI';
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: transparent;
+      background: linear-gradient(90deg, var(--tertiary), var(--secondary), var(--primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      clip-path: polygon(0 0, 100% 0, 100% 30%, 0 30%);
+      animation: glitch 3s infinite reverse;
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1.1rem;
+      position: relative;
+      padding: 0.5rem 0;
+      transition: all 0.3s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav a::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      transition: width 0.3s ease;
+    }
+
+    .nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--tertiary), var(--primary));
+      transition: width 0.3s ease 0.15s;
+    }
+
+    .nav a:hover {
+      color: var(--primary);
+      text-shadow: 0 0 10px rgba(0, 247, 255, 0.7);
+    }
+
+    .nav a:hover::before,
+    .nav a:hover::after {
+      width: 100%;
+    }
+
+    .section {
+      min-height: 100vh;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      transform-style: preserve-3d;
+    }
+
+    #hero {
+      background: radial-gradient(ellipse at center, 
+                rgba(5, 5, 10, 0.9) 0%, 
+                rgba(10, 10, 20, 0.95) 100%);
+      text-align: center;
+      perspective: 1000px;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      transform-style: preserve-3d;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .section h2 {
+      font-size: 4rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-weight: 700;
+      text-shadow: var(--neon-glow);
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+
+    .section h2::after {
+      content: '';
+      display: block;
+      width: 150px;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
+      margin: 1.5rem auto;
+      border-radius: 2px;
+      box-shadow: var(--neon-glow);
+    }
+
+    .section p {
+      font-size: 1.3rem;
+      max-width: 800px;
+      margin-bottom: 3rem;
+      line-height: 1.7;
+      opacity: 0.9;
+      position: relative;
+    }
+
+    .btn {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border: none;
+      padding: 1.2rem 3rem;
+      color: var(--dark);
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transform: translateZ(50px);
+    }
+
+    .btn:hover {
+      transform: translateY(-5px) translateZ(50px);
+      box-shadow: 0 10px 30px rgba(0, 247, 255, 0.9),
+                  0 0 40px rgba(138, 43, 226, 0.6);
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn-pulse {
+      animation: pulse 2s infinite;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2.5rem;
+      width: 100%;
+      max-width: 1200px;
+      margin-top: 3rem;
+      perspective: 1000px;
+    }
+
+    .feature-card {
+      background: rgba(10, 10, 20, 0.6);
+      border: 1px solid rgba(0, 247, 255, 0.1);
+      border-radius: 15px;
+      padding: 2.5rem 2rem;
+      transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+      transform-style: preserve-3d;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, 
+                  rgba(0, 247, 255, 0.1) 0%, 
+                  rgba(138, 43, 226, 0.1) 50%, 
+                  rgba(255, 0, 170, 0.1) 100%);
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-15px) rotateX(5deg) rotateY(5deg) scale(1.05);
+      box-shadow: 0 20px 40px rgba(0, 247, 255, 0.3),
+                  0 0 60px rgba(138, 43, 226, 0.2);
+      border-color: rgba(0, 247, 255, 0.5);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+      animation: hologram 3s infinite;
+    }
+
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .feature-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .feature-icon {
+      font-size: 3rem;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(90deg, var(--primary), var(--secondary), var(--tertiary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: var(--neon-glow);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover .feature-icon {
+      transform: scale(1.2) rotate(10deg);
+    }
+
+    .feature-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.2rem;
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
+    }
+
+    .feature-card h3::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--tertiary);
+      transition: width 0.3s ease;
+    }
+
+    .feature-card:hover h3::after {
+      width: 100%;
+    }
+
+    .feature-card p {
+      font-size: 1.1rem;
+      margin-bottom: 0;
+      line-height: 1.6;
+    }
+
+    .scanline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: linear-gradient(to bottom, 
+                  transparent, 
+                  rgba(0, 247, 255, 0.5), 
+                  transparent);
+      animation: scan 4s linear infinite;
+      opacity: 0.3;
+      pointer-events: none;
+    }
+
+    .footer {
+      background: rgba(5, 5, 10, 0.9);
+      color: var(--text);
+      text-align: center;
+      padding: 3rem 2rem;
+      border-top: 1px solid rgba(0, 247, 255, 0.1);
+      backdrop-filter: blur(10px);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, 
+                  transparent, 
+                  var(--primary), 
+                  var(--secondary), 
+                  var(--tertiary), 
+                  transparent);
+      box-shadow: 0 0 20px rgba(0, 247, 255, 0.7);
+    }
+
+    .footer p {
+      opacity: 0.8;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    /* Advanced background elements */
+    .particle-network {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      mix-blend-mode: screen;
+      opacity: 0;
+      animation: particle-fade 15s infinite;
+    }
+
+    @keyframes particle-fade {
+      0%, 100% { opacity: 0; transform: translateY(0); }
+      50% { opacity: 0.7; transform: translateY(-20px); }
+    }
+
+    .circuit-lines {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      opacity: 0.1;
+      background-image: 
+        linear-gradient(90deg, var(--primary) 1px, transparent 1px),
+        linear-gradient(var(--primary) 1px, transparent 1px);
+      background-size: 50px 50px;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    }
+
+    .holographic-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: 
+        linear-gradient(rgba(0, 247, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 247, 255, 0.1) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.3;
+      pointer-events: none;
+      animation: grid-pulse 8s infinite alternate;
+    }
+
+    @keyframes grid-pulse {
+      0% { opacity: 0.1; }
+      100% { opacity: 0.4; }
+    }
+
+    .glow-circle {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.3;
+      animation: pulse 8s infinite alternate;
+    }
+
+    /* 3D floating elements */
+    .floating-shape {
+      position: absolute;
+      opacity: 0.1;
+      filter: blur(30px);
+      animation: float 15s infinite ease-in-out;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .nav {
+        margin-top: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .section h2 {
+        font-size: 2.5rem;
+      }
+
+      .section p {
+        font-size: 1.1rem;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .btn {
+        padding: 1rem 2rem;
+        font-size: 1rem;
+      }
+    }
+
+    /* Terminal effect for hero section */
+    .terminal-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(10, 10, 20, 0.9),
+        rgba(10, 10, 20, 0.9) 2px,
+        transparent 2px,
+        transparent 4px
+      );
+      opacity: 0.1;
+      pointer-events: none;
+      animation: terminal-scan 0.5s linear infinite;
+    }
+
+    @keyframes terminal-scan {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 4px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="circuit-lines"></div>
+  <div class="holographic-grid"></div>
+  <div class="particle-network" id="particle-network"></div>
+  
+  <header class="header">
+    <h1 class="logo">SEVEN AI</h1>
+    <nav class="nav">
+      <a href="index.html"><i class="fas fa-comment-medical"></i> Home </a>
+      <a href="https://doctor-seven-ai.vercel.app/chat " class="active"><i class="fas fa-code"></i> Ai </a>
+      <a href="about.html"><i class="fas fa-brain"></i> About</a>
+      <a href="features.html"><i class="fas fa-atom"></i> Features</a>
+      <a href="https://botpress.com/docs/for-developers/introduction"><i class="fas fa-book"></i> Docs</a>
+      <a href="insight.html"><i class="fas fa-rss"></i> Insights</a>
+    </nav>
+  </header>
+
+  <section id="hero" class="section" style="background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--tertiary) 100%); padding: 100px 20px; position: relative; overflow: hidden; border-radius: 15px; box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);">
+    <div class="hero-content" style="text-align: center; color: #fff; position: relative; z-index: 2;">
+      <h2 style="font-size: 2.5em; margin-bottom: 20px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">YOUR AI HEALTHCARE COMPANION</h2>
+      <p style="font-size: 1.1em; line-height: 1.6; margin-bottom: 30px; color: #eee; text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);">Seven AI is an advanced digital health assistant designed to empower individuals with personalized medical insights, symptom assessment, and wellness guidance - anytime, anywhere.</p>
+      <a href="https://doctor-seven-ai.vercel.app/chat" style="text-decoration: none;">
+        <button class="btn btn-pulse" style="background-color: #090101; color: white; border: none;   padding: 15px 30px; font-size: 1em; border-radius: 50px; cursor: pointer; box-shadow: 0 4px 10px rgba(243, 239, 239, 0.2); transition: transform 0.2s ease-in-out;">START HEALTH ASSESSMENT</button>
+      </a>
+    </div>
+  
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;">
+      <div class="floating-shape" style="width: 150px; height: 150px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; position: absolute; top: 15%; left: 10%; animation: float 6s ease-in-out infinite, rotate 5s linear infinite; animation-delay: 0s;"></div>
+      <div class="floating-shape" style="width: 200px; height: 200px; background: rgba(255, 255, 255, 0.15); border-radius: 10px; position: absolute; top: 70%; left: 20%; animation: float 8s ease-in-out infinite reverse, rotate 7s linear infinite; animation-delay: 1s;"></div>
+      <div class="floating-shape" style="width: 100px; height: 100px; background: rgba(255, 255, 255, 0.1); border-radius: 50%; position: absolute; top: 40%; right: 15%; animation: float 7s ease-in-out infinite, rotate 6s linear infinite reverse; animation-delay: 2s;"></div>
+      <div class="floating-shape" style="width: 180px; height: 180px; background: rgba(255, 255, 255, 0.12); border-radius: 20px; position: absolute; bottom: 10%; right: 5%; animation: float 9s ease-in-out infinite reverse, rotate 8s linear infinite; animation-delay: 3s;"></div>
+    </div>
+  
+    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url('path/to/subtle-pattern.png'); opacity: 0.1; pointer-events: none;"></div>
+  </section>
+  
+  <style>
+    :root {
+      --primary: #6a1b9a; /* Deep Purple */
+      --secondary: #0d0d0e; /* Darker Purple */
+      --tertiary: #37c7e8; /* Medium Purple */
+    }
+  
+    .btn-pulse {
+      animation: pulse 1.5s infinite alternate;
+    }
+  
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.05);
+      }
+    }
+  
+    @keyframes float {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <section id="about" class="section">
+    <h2>INTELLIGENT HEALTHCARE</h2>
+    <p>Seven AI combines advanced artificial intelligence with medical expertise to provide reliable health information and preliminary assessments, helping bridge gaps in healthcare accessibility.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-stethoscope"></i></div>
+        <h3>Symptom Analysis</h3>
+        <p>Describe your symptoms and receive potential explanations, helping you understand when to seek professional medical attention.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-pills"></i></div>
+        <h3>Medication Support</h3>
+        <p>Get reminders for your medications, learn about potential side effects, and understand drug interactions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-heartbeat"></i></div>
+        <h3>Wellness Guidance</h3>
+        <p>Personalized recommendations for diet, exercise, sleep, and stress management tailored to your health profile.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="features" class="section">
+    <h2>CORE CAPABILITIES</h2>
+    <p>Seven AI integrates multiple technologies to create a comprehensive digital health companion.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-user-md"></i></div>
+        <h3>Preliminary Assessment</h3>
+        <p>AI-powered symptom checker helps you understand potential health concerns and appropriate next steps.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-heart"></i></div>
+        <h3>Chronic Care Support</h3>
+        <p>Specialized tools for managing conditions like diabetes, hypertension, and other chronic illnesses.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+        <h3>Mental Wellness</h3>
+        <p>Resources and support for mental health, including stress reduction techniques and mood tracking.</p>
+      </div>
+    </div>
+  </section>
+  
+
+  
+  <section id="research" class="section">
+    <h2>HEALTHCARE ACCESS FOR ALL</h2>
+    <p>Seven AI addresses critical gaps in healthcare by providing reliable information and support when and where you need it.</p>
+    <button class="btn">LEARN MORE</button>
+    
+    <!-- Glow effects -->
+    <div class="glow-circle" style="width: 500px; height: 500px; background: var(--primary); top: -100px; right: -100px;"></div>
+    <div class="glow-circle" style="width: 700px; height: 700px; background: var(--secondary); bottom: -200px; left: -200px; animation-delay: 2s;"></div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 SEVEN AI HEALTHCARE SYSTEMS. ALL RIGHTS RESERVED.</p>
+    <p>v4.2.7.9-alpha | AI Core Active</p>
+  </footer>
+
+  <script>
+    // Create advanced particle network
+    document.addEventListener('DOMContentLoaded', function() {
+      const container = document.getElementById('particle-network');
+      const particleCount = window.innerWidth < 768 ? 30 : 80;
+      
+      for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('particle');
+        
+        // Random properties
+        const size = Math.random() * 8 + 2;
+        const posX = Math.random() * 100;
+        const posY = Math.random() * 100;
+        const duration = Math.random() * 20 + 10;
+        const delay = Math.random() * 20;
+        const opacity = Math.random() * 0.5 + 0.1;
+        const color = Math.random() > 0.66 ? 'var(--primary)' : 
+                     Math.random() > 0.33 ? 'var(--secondary)' : 'var(--tertiary)';
+        
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        particle.style.left = `${posX}%`;
+        particle.style.top = `${posY}%`;
+        particle.style.opacity = opacity;
+        particle.style.background = color;
+        particle.style.animation = `particle-fade ${duration}s ease-in-out ${delay}s infinite`;
+        particle.style.setProperty('--random-offset', Math.random() * 100 - 50);
+        
+        // Add connection lines via canvas
+        container.appendChild(particle);
+      }
+      
+      // Create connecting lines between particles
+      const canvas = document.createElement('canvas');
+      canvas.style.position = 'absolute';
+      canvas.style.top = '0';
+      canvas.style.left = '0';
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.pointerEvents = 'none';
+      container.appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      canvas.width = container.offsetWidth;
+      canvas.height = container.offsetHeight;
+      
+      function drawConnections() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        const particles = document.querySelectorAll('.particle');
+        const particlesArray = Array.from(particles);
+        
+        particlesArray.forEach(p1 => {
+          const x1 = parseFloat(p1.style.left) / 100 * canvas.width;
+          const y1 = parseFloat(p1.style.top) / 100 * canvas.height;
+          
+          particlesArray.forEach(p2 => {
+            if (p1 === p2) return;
+            
+            const x2 = parseFloat(p2.style.left) / 100 * canvas.width;
+            const y2 = parseFloat(p2.style.top) / 100 * canvas.height;
+            
+            const distance = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+            
+            if (distance < 200) {
+              const opacity = 1 - distance / 200;
+              ctx.strokeStyle = `rgba(0, 247, 255, ${opacity * 0.3})`;
+              ctx.lineWidth = 1;
+              ctx.beginPath();
+              ctx.moveTo(x1, y1);
+              ctx.lineTo(x2, y2);
+              ctx.stroke();
+            }
+          });
+        });
+      }
+      
+      function animateParticles() {
+        const particles = document.querySelectorAll('.particle');
+        particles.forEach(p => {
+          const currentTop = parseFloat(p.style.top);
+          const newTop = (currentTop - 0.02) % 100;
+          p.style.top = `${newTop}%`;
+        });
+        
+        drawConnections();
+        requestAnimationFrame(animateParticles);
+      }
+      
+      window.addEventListener('resize', () => {
+        canvas.width = container.offsetWidth;
+        canvas.height = container.offsetHeight;
+      });
+      
+      setTimeout(() => {
+        animateParticles();
+      }, 1000);
+      
+      // Add interactive cursor effect
+      document.addEventListener('mousemove', (e) => {
+        const cursorGlow = document.createElement('div');
+        cursorGlow.style.position = 'fixed';
+        cursorGlow.style.width = '20px';
+        cursorGlow.style.height = '20px';
+        cursorGlow.style.background = 'radial-gradient(circle, var(--primary), transparent 70%)';
+        cursorGlow.style.borderRadius = '50%';
+        cursorGlow.style.pointerEvents = 'none';
+        cursorGlow.style.left = `${e.clientX - 10}px`;
+        cursorGlow.style.top = `${e.clientY - 10}px`;
+        cursorGlow.style.zIndex = '9999';
+        cursorGlow.style.opacity = '0.7';
+        document.body.appendChild(cursorGlow);
+        
+        setTimeout(() => {
+          cursorGlow.style.transform = 'scale(2)';
+          cursorGlow.style.opacity = '0';
+          setTimeout(() => {
+            cursorGlow.remove();
+          }, 300);
+        }, 50);
+      });
+    });
+  </script>
+</body>
+</html>

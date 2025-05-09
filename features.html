@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seven AI - Features</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+        --primary: #e1ff00;
+      --secondary: #6c5ce7;
+      --dark: #0a0a14;
+      --darker: #05050a;
+      --text: #e0e0ff;
+    
+      --code-bg: #1e1e2d;
+   
+      --card-bg: rgba(20, 20, 40, 0.8);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--darker);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: rgba(10, 10, 20, 0.9);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .main {
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 4rem;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 2rem;
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .feature-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .tech-stack {
+      margin: 4rem 0;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background: rgba(30, 30, 45, 0.6);
+      border-radius: 8px;
+    }
+
+    .tech-icon {
+      font-size: 2rem;
+      margin-right: 1.5rem;
+      color: var(--accent);
+      width: 50px;
+      text-align: center;
+    }
+
+    .problem-solution {
+      margin: 3rem 0;
+    }
+
+    .problem-card {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--secondary);
+    }
+
+    .problem-card h4 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .nav {
+        margin-top: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .main {
+        padding: 6rem 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Seven AI</div>
+    <nav class="nav">
+        <a href="index.html"><i class="fas fa-comment-medical"></i> Home </a>
+        <a href="https://doctor-seven-ai.vercel.app/chat " class="active"><i class="fas fa-code"></i> Ai </a>
+        <a href="about.html"><i class="fas fa-brain"></i> About</a>
+        <a href="features.html"><i class="fas fa-atom"></i> Features</a>
+        <a href="https://botpress.com/docs/for-developers/introduction"><i class="fas fa-book"></i> Docs</a>
+        <a href="insight.html"><i class="fas fa-rss"></i> Insights</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <h1>Seven AI Features</h1>
+    
+    <section class="knowledge-base">
+      <h2>Knowledge Base Integration</h2>
+      <p>Seven AI leverages multiple data storage solutions to provide accurate health information:</p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3><i class="fas fa-database"></i> Structured Data</h3>
+          <p>PostgreSQL for complex medical data relationships and efficient querying of symptoms, conditions, and treatments.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-file-alt"></i> Lightweight Storage</h3>
+          <p>SQLite for embedded deployments and smaller installations with basic healthcare knowledge requirements.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-file-code"></i> Flexible Formats</h3>
+          <p>JSON/CSV files for easily updatable reference data like medication lists and symptom databases.</p>
+        </div>
+      </div>
+      
+      <div class="problem-solution">
+        <h3>Data Integrity & Safety</h3>
+        <div class="problem-card">
+          <h4><i class="fas fa-shield-alt"></i> Verified Sources Only</h4>
+          <p>All medical information comes from peer-reviewed sources and established medical databases, with strict version control and update protocols.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="logic-system">
+      <h2>Clinical Decision Support</h2>
+      <p>Seven AI implements multiple layers of healthcare logic:</p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3><i class="fas fa-project-diagram"></i> Rule-Based Systems</h3>
+          <p>Initial symptom assessment using carefully designed "if-then" rules for common conditions and red flag identification.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+          <p>Advanced models trained on clinical datasets provide probabilistic assessments and differential diagnoses.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-book-medical"></i> Clinical Guidelines</h3>
+          <p>Integration with evidence-based medicine protocols ensures recommendations align with current best practices.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="integrations">
+      <h2>System Integrations</h2>
+      <p>Seven AI connects with existing healthcare infrastructure:</p>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3><i class="fas fa-file-medical"></i> EHR Systems</h3>
+          <p>Secure, consent-based access to electronic health records for personalized advice (HL7/FHIR compatible).</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-prescription-bottle-alt"></i> Pharmacy Networks</h3>
+          <p>Real-time medication availability checks and prescription renewal support.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-video"></i> Telehealth Platforms</h3>
+          <p>Seamless handoff to human providers when needed, with pre-consultation information gathering.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-ambulance"></i> Emergency Services</h3>
+          <p>Critical situation detection with automatic emergency service notification (where available).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="tech-stack">
+      <h2>Technical Implementation</h2>
+      
+      <div class="tech-item">
+        <div class="tech-icon"><i class="fas fa-robot"></i></div>
+        <div>
+          <h3>Botpress Core</h3>
+          <p>Conversational AI platform handling dialog management, NLU, and user interactions</p>
+        </div>
+      </div>
+      
+      <div class="tech-item">
+        <div class="tech-icon"><i class="fas fa-language"></i></div>
+        <div>
+          <h3>Custom NLU Models</h3>
+          <p>Healthcare-specific natural language understanding trained on medical dialogues</p>
+        </div>
+      </div>
+      
+      <div class="tech-item">
+        <div class="tech-icon"><i class="fas fa-code"></i></div>
+        <div>
+          <h3>JavaScript/Python Logic</h3>
+          <p>Code nodes implementing medical decision trees and API integrations</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="value-proposition">
+      <h2>Why Seven AI Matters</h2>
+      
+      <div class="feature-grid">
+        <div class="feature-card">
+          <h3><i class="fas fa-globe"></i> Healthcare Access</h3>
+          <p>Bridges gaps for rural populations and those with mobility challenges through 24/7 digital access.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-hand-holding-heart"></i> Patient Empowerment</h3>
+          <p>Gives individuals tools and knowledge to actively participate in their healthcare decisions.</p>
+        </div>
+        
+        <div class="feature-card">
+          <h3><i class="fas fa-chart-line-down"></i> Cost Reduction</h3>
+          <p>Reduces unnecessary visits and hospitalizations through accurate preliminary assessments.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="problems-solved">
+      <h2>Problems We Solve</h2>
+      
+      <div class="problem-card">
+        <h4><i class="fas fa-info-circle"></i> Information Overload</h4>
+        <p>Curates reliable medical information from trusted sources, eliminating confusion from conflicting online advice.</p>
+      </div>
+      
+      <div class="problem-card">
+        <h4><i class="fas fa-clock"></i> Care Delays</h4>
+        <p>Helps users recognize when to seek immediate care versus when self-care is appropriate.</p>
+      </div>
+      
+      <div class="problem-card">
+        <h4><i class="fas fa-user-cog"></i> Personalization Gap</h4>
+        <p>Provides tailored advice based on individual health profiles rather than generic recommendations.</p>
+      </div>
+      
+      <div class="problem-card">
+        <h4><i class="fas fa-pills"></i> Medication Adherence</h4>
+        <p>Intelligent reminders and explanations improve compliance with treatment regimens.</p>
+      </div>
+      
+      <div class="problem-card">
+        <h4><i class="fas fa-brain"></i> Mental Health Support</h4>
+        <p>Provides discreet, stigma-free access to mental health resources and screening tools.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

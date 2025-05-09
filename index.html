@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seven  AI - Futuristic Healthcare</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* CSS will go here */
+    </style>
+</head>
+<body>
+    <!-- 3D Entrance Portal -->
+    <div class="portal-container">
+        <div class="portal">
+            <div class="portal-ring outer"></div>
+            <div class="portal-ring middle"></div>
+            <div class="portal-ring inner"></div>
+            <div class="portal-center">
+                <h1>Seven  <span>AI </span> </h1>
+                <p>TRANSFORMING HEALTHCARE</p>
+                <a href="Homepage.html">
+                    <button class="enter-btn">ENTER MEDICAL PORTAL</button>
+                  </a>
+            </div>
+        </div>
+    </div>
+
+   
+
+    <script>
+        // JavaScript will go here
+    </script>
+</body>
+</html>
+<style> 
+
+    /* Base Styles */
+:root {
+    --primary: #00f0ff;
+    --secondary: #ff2d75;
+    --accent: #f0f;
+    --dark: #0a0a20;
+    --darker: #050510;
+    --light: #e0e0ff;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Orbitron', sans-serif;
+    background-color: var(--darker);
+    color: var(--light);
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+/* 3D Portal Entrance */
+.portal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(circle at center, var(--dark) 0%, #000 70%);
+    z-index: 1000;
+}
+
+.portal {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.portal-ring {
+    position: absolute;
+    border: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: rotate linear infinite;
+}
+
+.portal-ring.outer {
+    width: 100%;
+    height: 100%;
+    border-top-color: var(--accent);
+    animation-duration: 20s;
+    box-shadow: 0 0 30px var(--primary);
+}
+
+.portal-ring.middle {
+    width: 70%;
+    height: 70%;
+    border-right-color: var(--secondary);
+    animation-duration: 15s;
+    animation-direction: reverse;
+    box-shadow: 0 0 20px var(--secondary);
+}
+
+.portal-ring.inner {
+    width: 40%;
+    height: 40%;
+    border-bottom-color: var(--accent);
+    animation-duration: 10s;
+    box-shadow: 0 0 10px var(--accent);
+}
+
+.portal-center {
+    text-align: center;
+    z-index: 2;
+    text-shadow: 0 0 10px var(--primary);
+}
+
+.portal-center h1 {
+    font-size: 4rem;
+    margin: 0;
+    letter-spacing: 5px;
+}
+
+.portal-center h1 span {
+    color: var(--secondary);
+}
+
+.portal-center p {
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    margin: 10px 0 30px;
+    opacity: 0.8;
+}
+
+.enter-btn {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--light);
+    padding: 15px 40px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 15px var(--primary);
+}
+
+.enter-btn:hover {
+    background: rgba(0, 240, 255, 0.1);
+    box-shadow: 0 0 25px var(--primary);
+}
+
+.enter-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.4), transparent);
+    transition: 0.5s;
+}
+
+.enter-btn:hover::before {
+    left: 100%;
+}
+
+/* Main Interface (initially hidden) */
+.main-interface {
+    display: none;
+    height: 100vh;
+    background: radial-gradient(circle at 20% 30%, var(--dark) 0%, var(--darker) 70%);
+}
+
+/* Holographic Header */
+.holographic-header {
+    padding: 20px 40px;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    background: rgba(10, 10, 32, 0.7);
+    backdrop-filter: blur(10px);
+}
+
+.header-grid {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+}
+
+.logo-pulse {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-core {
+    width: 30px;
+    height: 30px;
+    background: var(--primary);
+    border-radius: 50%;
+    z-index: 2;
+    box-shadow: 0 0 15px var(--primary);
+    animation: pulse 2s infinite;
+}
+
+.logo-rings {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.logo-rings .ring {
+    position: absolute;
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    opacity: 0;
+    animation: ripple 3s infinite;
+}
+
+.logo-rings .r1 {
+    animation-delay: 0s;
+}
+
+.logo-rings .r2 {
+    animation-delay: 1s;
+}
+
+.logo-rings .r3 {
+    animation-delay: 2s;
+}
+
+.logo-pulse span {
+    position: absolute;
+    z-index: 3;
+    font-weight: bold;
+    color: var(--darker);
+}
+
+.holographic-nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-link {
+    color: var(--light);
+    text-decoration: none;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    position: relative;
+    padding: 5px 0;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.user-holo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid var(--primary);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--secondary);
+    opacity: 0.8;
+}
+
+/* AI Doctor Visualization */
+.ai-doctor-container {
+    position: relative;
+    width: 300px;
+    height: 400px;
+    margin: 50px auto;
+}
+
+.ai-head {
+    width: 120px;
+    height: 150px;
+    background: linear-gradient(145deg, #333344, #222233);
+    border-radius: 60px 60px 40px 40px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.ai-face {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100px;
+    height: 80px;
+}
+
+.eye {
+    position: absolute;
+    width: 20px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 10px;
+    top: 20px;
+    box-shadow: 0 0 10px var(--primary);
+    animation: blink 4s infinite;
+}
+
+.eye.left {
+    left: 15px;
+}
+
+.eye.right {
+    right: 15px;
+}
+
+.mouth {
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 40px;
+    height: 10px;
+    background: var(--secondary);
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 0 10px var(--secondary);
+    animation: talk 0.5s infinite alternate;
+}
+
+.ai-neck {
+    width: 40px;
+    height: 30px;
+    background: linear-gradient(145deg, #222233, #333344);
+    margin: 0 auto;
+    position: relative;
+    z-index: -1;
+}
+
+.ai-torso {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(145deg, #222233, #333344);
+    border-radius: 20px;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.circuit-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(90deg, rgba(0, 240, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(rgba(0, 240, 255, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.5;
+}
+
+.health-monitor {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.vitals-display {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.vital-sign {
+    position: relative;
+    height: 30px;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.vital-sign span {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: var(--primary);
+}
+
+.wave {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 240, 255, 0.3), transparent);
+    animation: wave 2s infinite linear;
+}
+
+.heart-rate .wave {
+    animation-duration: 1.5s;
+}
+
+.blood-pressure .wave {
+    animation-duration: 2s;
+}
+
+.oxygen .wave {
+    animation-duration: 3s;
+}
+
+.speech-bubble {
+    position: absolute;
+    top: -80px;
+    left: 150px;
+    width: 250px;
+    background: rgba(10, 10, 32, 0.8);
+    border: 1px solid var(--primary);
+    border-radius: 15px;
+    padding: 15px;
+    box-shadow: 0 0 15px var(--primary);
+    backdrop-filter: blur(5px);
+}
+
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 30px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: var(--primary) transparent transparent;
+}
+
+.speech-bubble p {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.typing-indicator {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: bounce 1.4s infinite ease-in-out;
+}
+
+.dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.dot:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+/* Health Dashboard */
+.health-dashboard {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    padding: 0 50px;
+    margin-top: 50px;
+}
+
+.dashboard-panel {
+    background: rgba(10, 10, 32, 0.5);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.dashboard-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 240, 255, 0.2);
+    border-color: rgba(0, 240, 255, 0.5);
+}
+
+.dashboard-panel::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        transparent 45%,
+        rgba(0, 240, 255, 0.1) 50%,
+        transparent 55%
+    );
+    transform: rotate(30deg);
+    animation: shine 3s infinite;
+}
+
+.dashboard-panel h3 {
+    margin-top: 0;
+    color: var(--primary);
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+    padding-bottom: 10px;
+}
+
+.dna-visualization {
+    height: 150px;
+    position: relative;
+    margin: 20px 0;
+}
+
+.dna-strand {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 2px;
+    height: 100%;
+    background: rgba(0, 240, 255, 0.3);
+}
+
+.node {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: var(--primary);
+    border-radius: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.node:nth-child(1) {
+    top: 10%;
+    animation: float 3s infinite ease-in-out;
+}
+
+.node:nth-child(2) {
+    top: 30%;
+    animation: float 3s infinite ease-in-out 0.5s;
+}
+
+.node:nth-child(3) {
+    top: 50%;
+    animation: float 3s infinite ease-in-out 1s;
+}
+
+.node:nth-child(4) {
+    top: 70%;
+    animation: float 3s infinite ease-in-out 1.5s;
+}
+
+.node:nth-child(5) {
+    top: 90%;
+    animation: float 3s infinite ease-in-out 2s;
+}
+
+.input-holo {
+    display: flex;
+    margin-top: 20px;
+}
+
+.input-holo input {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+    padding: 10px 15px;
+    color: var(--light);
+    font-family: 'Roboto', sans-serif;
+}
+
+.input-holo input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.scan-btn {
+    background: var(--primary);
+    color: var(--darker);
+    border: none;
+    padding: 0 20px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    transition: all 0.3s ease;
+}
+
+.scan-btn:hover {
+    background: var(--secondary);
+    color: var(--light);
+}
+
+.body-hologram {
+    height: 150px;
+    position: relative;
+    margin: 20px 0;
+    background: rgba(0, 240, 255, 0.05);
+    border-radius: 10px;
+}
+
+.organ {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.7;
+    box-shadow: 0 0 15px currentColor;
+}
+
+.heart {
+    width: 30px;
+    height: 30px;
+    background: var(--secondary);
+    top: 40%;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: pulse 1.5s infinite;
+}
+
+.lungs {
+    width: 50px;
+    height: 25px;
+    background: var(--primary);
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 25px;
+    animation: breathe 3s infinite;
+}
+
+.brain {
+    width: 40px;
+    height: 25px;
+    background: var(--accent);
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 20px 20px 30px 30px;
+    animation: pulse 2s infinite 0.5s;
+}
+
+.scan-full-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background: rgba(0, 240, 255, 0.1);
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-family: 'Orbitron', sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.scan-full-btn:hover {
+    background: var(--primary);
+    color: var(--darker);
+}
+
+.data-stream {
+    height: 100px;
+    position: relative;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.data-byte {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: var(--primary);
+    border-radius: 50%;
+    opacity: 0;
+    animation: dataFlow 3s infinite linear;
+}
+
+.data-byte:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+}
+
+.data-byte:nth-child(2) {
+    top: 40%;
+    left: 30%;
+    animation-delay: 0.5s;
+}
+
+.data-byte:nth-child(3) {
+    top: 60%;
+    left: 50%;
+    animation-delay: 1s;
+}
+
+.data-byte:nth-child(4) {
+    top: 80%;
+    left: 70%;
+    animation-delay: 1.5s;
+}
+
+.data-byte:nth-child(5) {
+    top: 30%;
+    left: 90%;
+    animation-delay: 2s;
+}
+
+.history-timeline {
+    height: 30px;
+    position: relative;
+    margin-top: 30px;
+}
+
+.timeline-event {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: var(--primary);
+    border-radius: 50%;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.timeline-event:nth-child(1) {
+    left: 20%;
+}
+
+.timeline-event:nth-child(2) {
+    left: 50%;
+}
+
+.timeline-event:nth-child(3) {
+    left: 80%;
+}
+
+.timeline-event::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 1px;
+    background: rgba(0, 240, 255, 0.3);
+    top: 50%;
+    left: 100%;
+}
+
+/* Floating Health Stats */
+.health-stats {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    gap: 15px;
+}
+
+.stat-card {
+    width: 120px;
+    background: rgba(10, 10, 32, 0.7);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 240, 255, 0.2);
+    border-color: var(--primary);
+}
+
+.stat-graph {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-graph::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 80%;
+    background: linear-gradient(to top, var(--primary), transparent);
+    animation: statRise 2s infinite alternate;
+}
+
+.stat-card:nth-child(2) .stat-graph::before {
+    height: 60%;
+    animation-delay: 0.3s;
+}
+
+.stat-card:nth-child(3) .stat-graph::before {
+    height: 90%;
+    animation-delay: 0.6s;
+}
+
+.stat-card:nth-child(4) .stat-graph::before {
+    height: 50%;
+    animation-delay: 0.9s;
+}
+
+.stat-card h4 {
+    margin: 0 0 5px;
+    font-size: 0.8rem;
+    color: var(--primary);
+    letter-spacing: 1px;
+}
+
+.stat-card p {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.stat-card p span {
+    font-size: 0.8rem;
+    opacity: 0.7;
+    margin-left: 2px;
+}
+
+/* Animations */
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.1); opacity: 0.7; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes ripple {
+    0% { transform: scale(0.2); opacity: 1; }
+    100% { transform: scale(1); opacity: 0; }
+}
+
+@keyframes blink {
+    0%, 45%, 55%, 100% { height: 10px; }
+    50% { height: 2px; }
+}
+
+@keyframes talk {
+    0% { height: 5px; }
+    100% { height: 15px; }
+}
+
+@keyframes wave {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-5px); }
+}
+
+@keyframes shine {
+    0% { top: -50%; left: -50%; }
+    100% { top: 150%; left: 150%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-10px); }
+}
+
+@keyframes breathe {
+    0%, 100% { transform: translateX(-50%) scaleY(1); }
+    50% { transform: translateX(-50%) scaleY(1.3); }
+}
+
+@keyframes dataFlow {
+    0% { opacity: 0; transform: translateY(0); }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-50px); }
+}
+
+@keyframes statRise {
+    0% { height: 20%; }
+    100% { height: 80%; }
+}
+</style>
+
+<script> 
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Portal entry animation
+    const enterBtn = document.querySelector('.enter-btn');
+    const portalContainer = document.querySelector('.portal-container');
+    const mainInterface = document.querySelector('.main-interface');
+    
+    enterBtn.addEventListener('click', function() {
+        // Animate portal collapse
+        portalContainer.style.animation = 'portalExit 1s forwards';
+        
+        // Show main interface after delay
+        setTimeout(() => {
+            portalContainer.style.display = 'none';
+            mainInterface.style.display = 'block';
+            
+            // Animate interface entrance
+            mainInterface.style.animation = 'interfaceEnter 1s forwards';
+        }, 1000);
+    });
+    
+    // Add CSS for portal exit animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes portalExit {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0); opacity: 0; }
+        }
+        
+        @keyframes interfaceEnter {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    // AI Doctor interaction
+    const aiFace = document.querySelector('.ai-face');
+    const speechBubble = document.querySelector('.speech-bubble p');
+    const typingIndicator = document.querySelector('.typing-indicator');
+    
+    // Sample conversation
+    const responses = [
+        "I'm analyzing your symptoms...",
+        "Your vitals look stable. Any specific concerns?",
+        "Based on my scan, I recommend increasing your water intake.",
+        "Let me check your medical history for similar patterns.",
+        "Would you like me to schedule a follow-up scan?"
+    ];
+    
+    aiFace.addEventListener('click', function() {
+        // Show typing indicator
+        typingIndicator.style.display = 'flex';
+        speechBubble.textContent = '';
+        
+        // Simulate AI thinking
+        setTimeout(() => {
+            typingIndicator.style.display = 'none';
+            const randomResponse = responses[Math.floor(Math.random() * responses.length)];
+            speechBubble.textContent = randomResponse;
+        }, 1500);
+    });
+    
+    // Panel hover effects
+    const panels = document.querySelectorAll('.dashboard-panel');
+    panels.forEach(panel => {
+        panel.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 20px 40px rgba(0, 240, 255, 0.3)';
+        });
+        
+        panel.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
+        });
+    });
+    
+    // Simulate dynamic health data
+    function updateHealthStats() {
+        const stats = document.querySelectorAll('.stat-card p');
+        
+        // Random but realistic fluctuations
+        const hr = 70 + Math.floor(Math.random() * 5);
+        const bpTop = 115 + Math.floor(Math.random() * 10);
+        const bpBottom = 75 + Math.floor(Math.random() * 5);
+        const oxygen = 97 + Math.floor(Math.random() * 2);
+        const temp = 36.5 + (Math.floor(Math.random() * 3) / 10;
+        
+        stats[0].textContent = `${hr} `;
+        stats[1].textContent = `${bpTop}/${bpBottom} `;
+        stats[2].textContent = `${oxygen} `;
+        stats[3].textContent = `${temp.toFixed(1)} `;
+    }
+    
+    // Update stats every 5 seconds
+    setInterval(updateHealthStats, 5000);
+    updateHealthStats(); // Initial update
+});
+
+</script>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seven AI - Technical Insights</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #e1ff00;
+      --secondary: #6c5ce7;
+      --dark: #0a0a14;
+      --darker: #05050a;
+      --text: #e0e0ff;
+      --card-bg: rgba(20, 20, 40, 0.8);
+      --code-bg: #1e1e2d;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--darker);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: rgba(10, 10, 20, 0.9);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .main {
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    h1, h2, h3 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 4rem;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .insight-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 2rem;
+      margin: 2rem 0;
+      border-left: 4px solid var(--primary);
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .feature-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      border-top: 3px solid var(--secondary);
+    }
+
+    .feature-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .code-block {
+      background: var(--code-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      font-family: 'Fira Code', monospace;
+      overflow-x: auto;
+    }
+
+    .config-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 2rem 0;
+    }
+
+    .config-table th, .config-table td {
+      padding: 1rem;
+      text-align: left;
+      border-bottom: 1px solid rgba(0, 247, 255, 0.2);
+    }
+
+    .config-table th {
+      color: var(--accent);
+    }
+
+    .tech-diagram {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem auto;
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .nav {
+        margin-top: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .main {
+        padding: 6rem 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Seven AI</div>
+    <nav class="nav">
+        <a href="index.html"><i class="fas fa-comment-medical"></i> Home </a>
+        <a href="https://doctor-seven-ai.vercel.app/chat " class="active"><i class="fas fa-code"></i> Ai </a>
+        <a href="about.html"><i class="fas fa-brain"></i> About</a>
+        <a href="features.html"><i class="fas fa-atom"></i> Features</a>
+        <a href="https://botpress.com/docs/for-developers/introduction"><i class="fas fa-book"></i> Docs</a>
+        <a href="insight.html"><i class="fas fa-rss"></i> Insights</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <h1>Technical Insights</h1>
+
+    <section class="performance">
+      <h2>System Performance & Security</h2>
+      
+      <div class="insight-card">
+        <h3><i class="fas fa-tachometer-alt"></i> Rate Limiting</h3>
+        <p>Seven AI implements intelligent rate limiting to ensure system stability and prevent abuse:</p>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3><i class="fas fa-users"></i> Team Plan</h3>
+            <p>Higher message processing limits for team deployments (up to 50 messages/second)</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-building"></i> Enterprise</h3>
+            <p>Customizable rate limits tailored to organizational needs and usage patterns</p>
+          </div>
+        </div>
+        
+        <p>Rate limits prevent system overload while maintaining responsive performance for legitimate users.</p>
+      </div>
+      
+      <div class="insight-card">
+        <h3><i class="fas fa-shield-alt"></i> Allowed Origins</h3>
+        <p>Domain whitelisting ensures secure deployment:</p>
+        
+        <div class="code-block">
+          // Example allowed origins configuration<br>
+          allowed_origins: [<br>
+          &nbsp;&nbsp;"https://patientportal.example.com",<br>
+          &nbsp;&nbsp;"https://clinic.example.org",<br>
+          &nbsp;&nbsp;"https://mobileapp.example.io"<br>
+          ]
+        </div>
+        
+        <p>This security-first approach prevents unauthorized embedding of Seven AI while maintaining flexibility for approved integrations.</p>
+      </div>
+    </section>
+
+    <section class="api-integration">
+      <h2>API Architecture</h2>
+      
+      <div class="insight-card">
+        <h3><i class="fas fa-comments"></i> Chat API</h3>
+        <p>Seven AI's HTTP API for backend integrations:</p>
+        
+        <div class="tech-diagram">
+          <p><strong>API Request Flow</strong></p>
+          <p>Client App → Chat API → Botpress Core → Response</p>
+        </div>
+        
+        <h4>Key Characteristics:</h4>
+        <ul style="margin-left: 2rem; margin-bottom: 1.5rem;">
+          <li>Designed for backend-to-backend communication</li>
+          <li>Maintains separate conversation threads from other channels</li>
+          <li>Requires explicit installation of Chat Integration</li>
+        </ul>
+        
+        <h4>Configuration Options:</h4>
+        <table class="config-table">
+          <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+            <th>Required</th>
+          </tr>
+          <tr>
+            <td>Encryption Key</td>
+            <td>For request verification (JWT signing)</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>Webhook URL</td>
+            <td>For receiving chat events</td>
+            <td>Optional</td>
+          </tr>
+          <tr>
+            <td>Webhook Secret</td>
+            <td>For webhook request validation</td>
+            <td>If using webhook</td>
+          </tr>
+        </table>
+      </div>
+    </section>
+
+    <section class="healthcare-use-cases">
+      <h2>Healthcare Applications</h2>
+      
+      <div class="insight-card">
+        <h3><i class="fas fa-stethoscope"></i> Clinical Use Cases</h3>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3><i class="fas fa-thermometer"></i> Symptom Assessment</h3>
+            <p>AI-powered preliminary evaluation with triage recommendations</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-pills"></i> Medication Management</h3>
+            <p>Dosage reminders, side effect information, and interaction checks</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-heartbeat"></i> Chronic Care</h3>
+            <p>Personalized tracking and guidance for long-term conditions</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-brain"></i> Mental Health</h3>
+            <p>Mood tracking, coping techniques, and crisis resources</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="insight-card">
+        <h3><i class="fas fa-mobile-alt"></i> Implementation Channels</h3>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3><i class="fas fa-mobile"></i> Mobile Apps</h3>
+            <p>Native iOS/Android applications for patient access</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-desktop"></i> Web Portal</h3>
+            <p>Comprehensive web interface with EHR integration</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-watch-fitness"></i> Wearables</h3>
+            <p>Integration with health tracking devices</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-microphone"></i> Voice Assistants</h3>
+            <p>Hands-free access for users with mobility challenges</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="analytics">
+      <h2>Performance Monitoring</h2>
+      
+      <div class="insight-card">
+        <h3><i class="fas fa-chart-bar"></i> Usage Analytics</h3>
+        <p>Seven AI provides comprehensive metrics to track system performance:</p>
+        
+        <div class="feature-grid">
+          <div class="feature-card">
+            <h3><i class="fas fa-comment-dots"></i> Message Volume</h3>
+            <p>Track conversation frequency and peak usage times</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-user-plus"></i> User Growth</h3>
+            <p>Monitor new user acquisition and retention rates</p>
+          </div>
+          
+          <div class="feature-card">
+            <h3><i class="fas fa-clock"></i> Session Duration</h3>
+            <p>Analyze engagement patterns and conversation complexity</p>
+          </div>
+        </div>
+        
+        <p>These metrics help optimize bot behavior and resource allocation while identifying opportunities for improvement.</p>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

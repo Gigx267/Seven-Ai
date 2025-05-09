@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Seven AI - Technical Implementation</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+        --primary: #e1ff00;
+      --secondary: #6c5ce7;
+      --dark: #0a0a14;
+      --darker: #05050a;
+      --text: #e0e0ff;
+    
+      --code-bg: #1e1e2d;
+   
+      --card-bg: rgba(20, 20, 40, 0.8);
+    }
+
+    @font-face {
+      font-family: 'Fira Code';
+      src: url('https://fonts.googleapis.com/css2?family=Fira+Code&display=swap');
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--darker);
+      color: var(--text);
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      line-height: 1.6;
+    }
+
+    .header {
+      background: rgba(10, 10, 20, 0.9);
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(0, 247, 255, 0.1);
+    }
+
+    .logo {
+      font-family: 'Fira Code', monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--accent);
+    }
+
+    .main {
+      padding: 8rem 2rem 4rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section {
+      margin-bottom: 4rem;
+    }
+
+    h1, h2, h3 {
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 3rem;
+    }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .tech-card {
+      background: var(--code-bg);
+      border-radius: 8px;
+      padding: 2rem;
+      border-left: 4px solid var(--primary);
+    }
+
+    .tech-card h3 {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .code-block {
+      background: var(--code-bg);
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+      overflow-x: auto;
+      font-family: 'Fira Code', monospace;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    .code-comment {
+      color: #6a9955;
+    }
+
+    .code-keyword {
+      color: #569cd6;
+    }
+
+    .code-function {
+      color: #dcdcaa;
+    }
+
+    .code-string {
+      color: #ce9178;
+    }
+
+    .code-var {
+      color: #9cdcfe;
+    }
+
+    .architecture {
+      background: var(--code-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      margin: 3rem 0;
+    }
+
+    .architecture-item {
+      display: flex;
+      margin-bottom: 2rem;
+      align-items: flex-start;
+    }
+
+    .architecture-number {
+      background: var(--primary);
+      color: var(--dark);
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1.5rem;
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+
+    .architecture-content {
+      flex: 1;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        padding: 1rem;
+      }
+
+      .nav {
+        margin-top: 1rem;
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .main {
+        padding: 6rem 1rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo">Seven AI</div>
+    <nav class="nav">
+        <a href="Homepage.html"><i class="fas fa-comment-medical"></i> Home </a>
+        <a href="https://doctor-seven-ai.vercel.app/chat " class="active"><i class="fas fa-code"></i> Ai </a>
+        <a href="about.html"><i class="fas fa-brain"></i> About</a>
+        <a href="features.html"><i class="fas fa-atom"></i> Features</a>
+        <a href="https://botpress.com/docs/for-developers/introduction"><i class="fas fa-book"></i> Docs</a>
+        <a href="insight.html"><i class="fas fa-rss"></i> Insights</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="section">
+      <h1>Technical Implementation</h1>
+      <p>Seven AI is built on Botpress, an open-source conversational AI platform, with custom NLU integration for healthcare-specific entity recognition.</p>
+      
+      <h2>Core Architecture</h2>
+      <div class="architecture">
+        <div class="architecture-item">
+          <div class="architecture-number">1</div>
+          <div class="architecture-content">
+            <h3>Natural Language Understanding</h3>
+            <p>Custom-trained NLU model using Botpress's engine with healthcare-specific entities and intents. The model recognizes symptoms, medications, and conditions from user input.</p>
+          </div>
+        </div>
+        
+        <div class="architecture-item">
+          <div class="architecture-number">2</div>
+          <div class="architecture-content">
+            <h3>Conversation Flow</h3>
+            <p>Dialog management using Botpress flows with conditional transitions based on extracted entities and user responses.</p>
+          </div>
+        </div>
+        
+        <div class="architecture-item">
+          <div class="architecture-number">3</div>
+          <div class="architecture-content">
+            <h3>Business Logic</h3>
+            <p>JavaScript code nodes handle symptom analysis, basic triage logic, and API integrations with medical databases.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>NLU Implementation</h2>
+      <p>The natural language understanding system is trained to recognize healthcare-specific entities:</p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3><i class="fas fa-head-side-cough"></i> Symptoms</h3>
+          <p>Recognizes over 500 common symptoms and their variations (e.g., "headache", "nausea", "shortness of breath")</p>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-pills"></i> Medications</h3>
+          <p>Identifies medication names, dosages, and frequencies in user input</p>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-procedures"></i> Conditions</h3>
+          <p>Detects mentions of medical conditions and comorbidities</p>
+        </div>
+      </div>
+      
+      <h3>Training Data Example</h3>
+      <div class="code-block">
+        <span class="code-comment">// Intent: report_symptoms</span><br>
+        <span class="code-keyword">-</span> <span class="code-string">"I have a fever and cough"</span><br>
+        <span class="code-keyword">-</span> <span class="code-string">"My head hurts and I feel nauseous"</span><br>
+        <span class="code-keyword">-</span> <span class="code-string">"Experiencing chest pain and dizziness"</span><br><br>
+        
+        <span class="code-comment">// Intent: ask_medication_info</span><br>
+        <span class="code-keyword">-</span> <span class="code-string">"What are the side effects of ibuprofen?"</span><br>
+        <span class="code-keyword">-</span> <span class="code-string">"Can I take paracetamol with antibiotics?"</span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Code Node Implementation</h2>
+      <p>JavaScript code nodes handle the business logic for symptom analysis and response generation:</p>
+      
+      <div class="code-block">
+        <span class="code-comment">// Basic symptom analysis in a Botpress code node</span><br>
+        <span class="code-keyword">const</span> <span class="code-var">analyzeSymptoms</span> = (<span class="code-var">entities</span>) => {<br>
+        &nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-var">symptoms</span> = <span class="code-var">entities</span>.<span class="code-function">filter</span>(e => e.type === 'symptom');<br><br>
+        
+        &nbsp;&nbsp;<span class="code-comment">// Check for emergency symptoms</span><br>
+        &nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-var">emergencySymptoms</span> = [<span class="code-string">'chest pain'</span>, <span class="code-string">'difficulty breathing'</span>, <span class="code-string">'severe bleeding'</span>];<br>
+        &nbsp;&nbsp;<span class="code-keyword">if</span> (<span class="code-var">symptoms</span>.<span class="code-function">some</span>(s => <span class="code-var">emergencySymptoms</span>.<span class="code-function">includes</span>(s.value))) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> { <span class="code-var">severity</span>: <span class="code-string">'emergency'</span>, <span class="code-var">message</span>: <span class="code-string">'Please seek immediate medical attention'</span> };<br>
+        &nbsp;&nbsp;}<br><br>
+        
+        &nbsp;&nbsp;<span class="code-comment">// Return analysis result</span><br>
+        &nbsp;&nbsp;<span class="code-keyword">return</span> { <span class="code-var">severity</span>: <span class="code-string">'non-emergency'</span>, <span class="code-var">symptoms</span>: <span class="code-var">symptoms</span>.<span class="code-function">map</span>(s => s.value) };<br>
+        };
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>API Integrations</h2>
+      <p>For more complex medical queries, Seven AI integrates with external healthcare APIs:</p>
+      
+      <div class="tech-grid">
+        <div class="tech-card">
+          <h3><i class="fas fa-database"></i> Medication Database</h3>
+          <p>Real-time API calls to fetch medication information, side effects, and interactions</p>
+        </div>
+        
+        <div class="tech-card">
+          <h3><i class="fas fa-book-medical"></i> Clinical Guidelines</h3>
+          <p>Integration with evidence-based medical guidelines for symptom analysis</p>
+        </div>
+      </div>
+      
+      <h3>API Integration Example</h3>
+      <div class="code-block">
+        <span class="code-comment">// Fetching medication info from external API</span><br>
+        <span class="code-keyword">const</span> <span class="code-var">getMedicationInfo</span> = <span class="code-keyword">async</span> (<span class="code-var">medicationName</span>) => {<br>
+        &nbsp;&nbsp;<span class="code-keyword">try</span> {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">const</span> <span class="code-var">response</span> = <span class="code-keyword">await</span> <span class="code-function">axios</span>.<span class="code-function">get</span>(<span class="code-string">`https://api.medicalinfo.com/meds/${medicationName}`</span>);<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> <span class="code-var">response</span>.<span class="code-var">data</span>;<br>
+        &nbsp;&nbsp;} <span class="code-keyword">catch</span> (<span class="code-var">error</span>) {<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="code-keyword">return</span> { <span class="code-var">error</span>: <span class="code-string">'Medication not found'</span> };<br>
+        &nbsp;&nbsp;}<br>
+        };
+      </div>
+    </section>
+  </main>
+</body>
+</html>
