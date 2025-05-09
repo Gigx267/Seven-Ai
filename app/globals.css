@@ -1,0 +1,632 @@
+/* global.css */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  text-align: center;
+  color: #333;
+}
+
+.chat-window {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: rgba(170, 170, 170, 0.1);;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+  height: 70vh !important;
+}
+
+.message {
+  max-width: 50%;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.user {
+  background-color: rgba(170, 170, 170, 0.1);
+  color: white;
+  margin-left: auto;
+  max-width: 300px;
+}
+
+.bot {
+  background-color: rgba(170, 170, 170, 0.1);;
+  color: #333;
+}
+
+.loading {
+  color: #666;
+  font-style: italic;
+}
+
+.input-form {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.button {
+  padding: 10px 20px;
+  background: transparent;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #0056b3;
+}
+
+.button:disabled {
+  background: rgba(170, 170, 170, 0.1);;
+  cursor: not-allowed;
+}
+
+/* global.css */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+  max-height: 100vh;
+  gap: 20px;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: rgba(170, 170, 170, 0.1);;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.sidebar-title {
+  color: #ccc;
+  margin: 0;
+}
+
+.file-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.file-input {
+  padding: 5px;
+}
+
+.summary-section {
+  flex: 1;
+  /* background-color: rgba(170, 170, 170, 0.1); */
+  padding: 15px;
+  border-radius: 8px;
+  /* border: 1px solid #ddd; */
+}
+
+.summary-title {
+  color: #ccc;
+  margin: 0 0 10px 0;
+}
+
+.summary-text {
+  color: #555;
+  line-height: 1.5;
+}
+
+.summary-text {
+  min-height: 200px; /* Ensures the textarea has a minimum height of 200px */
+  resize: none; /* Prevents resizing the textarea */
+  border: none; /* Removes the border */
+  padding: 12px; /* Adds padding inside the textarea */
+  box-shadow: none; /* Removes any box shadow */
+  outline: none; /* Removes the outline on focus */
+  color: #ccc; /* Sets the text color */
+  font-size: 16px; /* Sets the font size for the text */
+  width: 100%; /* Makes the textarea full width */
+  height: 100%;
+  max-height: 500px;
+  border-radius: 4px; /* Adds border-radius for rounded corners */
+  background-color: transparent;
+}
+
+.summary-text:focus {
+  outline: none; /* Ensures no outline appears on focus */
+}
+
+
+.summary-placeholder {
+  color: #999;
+  font-style: italic;
+}
+
+.chat-container {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* justify-content: ; */
+}
+
+.title {
+  text-align: center;
+  color: #ccc;
+}
+
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  background-color: rgba(170, 170, 170, 0.1);
+  padding: 20px;
+  border-radius: 8px;
+  margin: 10px 0;
+  height: 100%;
+  margin-top: auto;
+}
+
+.message {
+  max-width: 70%;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.user {
+  /* background: #007bff; */
+  color: white;
+  margin-left: auto;
+}
+
+.bot {
+  color: #ccc;
+  /* border: 1px solid #ccc; */
+}
+
+.loading {
+  color: #666;
+  font-style: italic;
+}
+
+.input-form {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  flex: 1;
+  padding: 10px;
+  color: #ccc;
+  background-color: rgba(170, 170, 170, 0.1);
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  outline: none;
+}
+
+
+.button {
+  padding: 10px 20px;
+  background: rgba(170, 170, 170, 0.1);;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #000;
+  transition: 0.6s ease, color 0.6s ease;
+}
+
+.button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+
+/* global.css */
+
+/* Reset and Base Styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  background-color: #000;
+  position: relative; /* Needed to position the pseudo-element */
+  width: 100%;
+}
+
+body::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/bgimg.jpeg');
+  background-size: cover; /* Ensure the image covers the whole body */
+  background-position: center;
+  opacity: 0.1; /* Smallest opacity for the background */
+  z-index: -1; /* Send the background image behind the content */
+}
+
+
+.landing-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header Styles */
+.header {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ padding-top: 20px;
+ padding-bottom: 20px;
+ width: 100%;
+ position: fixed;
+ z-index: 100;
+}
+
+.header:before {
+  content: " ";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  background-color: #2F2F2F;
+  height: 100px;  
+  opacity: .2; 
+  z-index: -1;
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  margin-left: 20px;
+}
+
+ul, .cta-buttons{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  border: 1px solid #ccc;
+  padding: 15px 25px;
+  border-radius: 14px;
+}
+.nav-link{
+  color: #ccc;
+  text-decoration: none;
+  transition: 0.3s ease, color 0.3s ease;
+
+}
+
+.nav-link:hover{
+  color: #fff;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-button{
+  background-color: #fff;
+  text-decoration: none;
+  color: #000;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.cta-buttons{
+  margin-right: 20px;
+  border: none !important;
+  padding: 0 !important;
+}
+
+
+/* Hero Section Styles */
+.hero-section {
+  text-align: center;
+  padding: 30vh 40px;
+}
+
+.headline {
+  font-size: 64px;
+  font-weight: 500;
+  padding: 0;
+  margin: 0 !important;
+}
+.hero-subtitle {
+  font-size: 16px;
+  color: #ccc;
+  max-width: 600px;
+  margin-top:40px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-button {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+  gap: 10px; 
+  width: fit-content;
+  padding: 15px;
+  background-color: #fff;
+  color: #000;
+  text-decoration: none;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  z-index: 10;
+}
+
+.hero-button:hover {
+  background-color: #e0e0e0; /* Light gray on hover */
+}
+
+.hero-info {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 50px;
+}
+
+.hero-image {
+  width: 800px;
+  height: 400px;
+  margin: 40px auto 0;
+  /* transform: rotate(5deg); Tilted effect */
+  margin-top: 30px;
+  border-radius: 14px;
+}
+.imagee{
+  min-height: 70vh;
+}
+.imghero{
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+
+}
+
+/* Existing Chatbot Styles (if any) - Add your existing styles here if they exist */
+.app-container {
+  display: flex;
+  height: 100%;
+  gap: 20px;
+}
+
+/* Feature Card */
+.feature{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 50px auto;
+  gap: 40px;
+  min-height: 100vh;
+}
+
+.feature-block{
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.card {
+  color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  border: 0.5px solid #9D9D9D;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.card img{
+  border-radius: 12px;
+}
+
+.icon-container {
+  background-color: #FF5733; /* Light orange background */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.content {
+  text-align: start;
+}
+
+.title {
+  color:  #ccc;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: start !important;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 14px;
+  color: #9D9D9D;
+}
+
+.body-container{
+  margin: 0 auto;
+}
+/* Prefooter  */
+.prefooterCard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(170, 170, 170, 0.1);;
+  color: white;
+  padding: 40px;
+  border-radius: 10px;
+  margin-top: 30vh;
+  margin-bottom: 20vh;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.prefooterCard-text {
+  flex: 1;
+  max-width: 600px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.description {
+  font-size: 16px;
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.cta-btn {
+  background-color: #fff;
+  color: #111;
+  font-size: 16px;
+  padding: 12px 25px;
+  border-radius: 30px;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.cta-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.cta-btn svg {
+  margin-left: 10px;
+}
+
+.footer-text {
+  font-size: 14px;
+  color: #aaa;
+  margin-top: 10px;
+}
+
+.prefooterCard-image {
+  flex: 1;
+  background-color: #e0e0e0;
+  background-image: url('/img2.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 10px;
+  height: 300px; /* Adjust based on your needs */
+}
+
+/* Footer  */
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 20;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer-text {
+  flex: 1;
+}
+
+.footer-title {
+  font-size: 36px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.footer-description {
+  font-size: 16px;
+  color: #ccc;
+}
+
+.footer-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.button1 {
+  background-color: #111;
+  color: white;
+  border: 1px solid white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.button1:hover {
+  background-color: #333;
+}
+
+.button2 {
+  background-color: white;
+  color: #111;
+  border: 1px solid white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.button2:hover {
+  background-color: #f0f0f0;
+}
+
+/* / Feature head  */
+.feature-head{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  align-self: flex-start;
+  width: 100%;
+}
+
+.feature-sub{
+  max-width: 250px;
+  color: #aaa;
+}
